@@ -96,9 +96,8 @@ the table below for reference.
 | AV_STATUS_SNS_PUBLISH_CLEAN | Publish AV_STATUS_CLEAN results to AV_STATUS_SNS_ARN | True | No |
 | AV_STATUS_SNS_PUBLISH_INFECTED | Publish AV_STATUS_INFECTED results to AV_STATUS_SNS_ARN | True | No |
 | AV_TIMESTAMP_METADATA | The tag/metadata name representing file's scan time | av-timestamp | No |
-| CLAMAVLIB_PATH | Path to ClamAV library files | ./bin | No |
-| CLAMSCAN_PATH | Path to ClamAV clamscan binary | ./bin/clamscan | No |
-| FRESHCLAM_PATH | Path to ClamAV freshclam binary | ./bin/freshclam | No |
+| CLAMSCAN_PATH | Path to ClamAV clamscan binary | /usr/local/bin/clamscan | No |
+| FRESHCLAM_PATH | Path to ClamAV freshclam binary | /usr/local/bin/freshclam | No |
 | DATADOG_API_KEY | API Key for pushing metrics to DataDog (optional) | | No |
 | AV_PROCESS_ORIGINAL_VERSION_ONLY | Controls that only original version of an S3 key is processed (if bucket versioning is enabled) | False | No |
 | AV_DELETE_INFECTED_FILES | Controls whether infected files should be automatically deleted | False | No |

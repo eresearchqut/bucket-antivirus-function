@@ -17,7 +17,6 @@ import copy
 import json
 import os
 from urllib.parse import unquote_plus
-from distutils.util import strtobool
 
 import boto3
 
@@ -151,7 +150,6 @@ def set_av_tags(s3_client, s3_object, scan_result, scan_signature, timestamp):
         Bucket=s3_object.bucket_name, Key=s3_object.key, Tagging={"TagSet": new_tags}
     )
 
-
 def sns_start_scan(sns_client, s3_object, scan_start_sns_arn, timestamp):
     message = {
         "bucket": s3_object.bucket_name,
@@ -273,4 +271,4 @@ def lambda_handler(event, context):
 
 
 def str_to_bool(s):
-    return bool(strtobool(str(s)))
+    return s.lower() in ["true", "1", "t", "y", "yes"]

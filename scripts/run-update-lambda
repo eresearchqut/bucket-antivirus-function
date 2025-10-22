@@ -21,7 +21,6 @@ docker run --rm \
   -e AWS_REGION \
   -e AWS_SECRET_ACCESS_KEY \
   -e AWS_SESSION_TOKEN \
-  -e CLAMAVLIB_PATH \
   --memory="${MEM}" \
   --memory-swap="${MEM}" \
   --cpus="${CPUS}" \

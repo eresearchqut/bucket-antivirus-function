@@ -21,7 +21,6 @@ import clamav
 from common import AV_DEFINITION_PATH
 from common import AV_DEFINITION_S3_BUCKET
 from common import AV_DEFINITION_S3_PREFIX
-from common import CLAMAVLIB_PATH
 from common import S3_ENDPOINT
 from common import get_timestamp
 
@@ -33,7 +32,7 @@ def lambda_handler(event, context):
     # if os.path.exists(AV_DEFINITION_PATH):
     #     shutil.rmtree(AV_DEFINITION_PATH)
 
-    clamav.update_defs_from_freshclam(AV_DEFINITION_PATH, CLAMAVLIB_PATH)
+    clamav.update_defs_from_freshclam(AV_DEFINITION_PATH)
     # If main.cvd gets updated (very rare), we will need to force freshclam
     # to download the compressed version to keep file sizes down.
     # The existence of main.cud is the trigger to know this has happened.
@@ -41,7 +40,7 @@ def lambda_handler(event, context):
         os.remove(os.path.join(AV_DEFINITION_PATH, "main.cud"))
         if os.path.exists(os.path.join(AV_DEFINITION_PATH, "main.cvd")):
             os.remove(os.path.join(AV_DEFINITION_PATH, "main.cvd"))
-        clamav.update_defs_from_freshclam(AV_DEFINITION_PATH, CLAMAVLIB_PATH)
+        clamav.update_defs_from_freshclam(AV_DEFINITION_PATH)
     clamav.upload_defs_to_s3(
         s3_client, AV_DEFINITION_S3_BUCKET, AV_DEFINITION_S3_PREFIX, AV_DEFINITION_PATH
     )
